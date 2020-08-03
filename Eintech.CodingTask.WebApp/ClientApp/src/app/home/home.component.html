@@ -1,0 +1,28 @@
+<h1>Hello, world!</h1>
+<p>Welcome to your new single-page application, built with:</p>
+
+<p *ngIf="!people"><em>Loading...</em></p>
+
+<form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+  <label>
+    Name:
+    <input type="text" formControlName="name">
+  </label>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!personForm.valid">Add Person</button>
+</form>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="people">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Created Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let person of people">
+      <td>{{ person.name }}</td>
+      <td>{{ person.createdDate | date:'medium' }}</td>
+    </tr>
+  </tbody>
+</table>
